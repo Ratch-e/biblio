@@ -1,9 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../components/App/App';
+import Header from '../components/App/Header';
+import LibGenerator from '../components/LibGenerator/LibGenerator';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('Запуск компонентов', () => {
+  test('Приложение запускается', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  test('Шапка показывается', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Header />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  test('Генератор показывается', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<LibGenerator />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
 });
