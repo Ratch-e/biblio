@@ -7,9 +7,13 @@ class NewItem extends Component {
     super(props);
 
     this.state = {
-      name: '',
-      place: '',
+      author_name: '',
+      author_lastname: '',
+      author_middlename: '',
+      title: '',
       city: '',
+      publisher: '',
+      year: '',
       pages: '',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -31,20 +35,35 @@ class NewItem extends Component {
     if (this.validateInputs()) {
       this.props.add(this.state);
       this.resetState();
+    } else {
+      console.error('Не прошло валидацию');
     }
   }
 
   validateInputs() {
-    return !!this.state.name && !!this.state.place && !!this.state.city && !!this.state.pages;
+    return (
+      !!this.state.title &&
+      !!this.state.city &&
+      !!this.state.pages &&
+      !!this.state.author_name &&
+      !!this.state.author_lastname &&
+      !!this.state.author_middlename &&
+      !!this.state.publisher &&
+      !!this.state.year
+    );
   }
 
   /**
    * Сброс хранилища
    */
   resetState() {
-    this.setState({ name: '' });
-    this.setState({ place: '' });
+    this.setState({ author_name: '' });
+    this.setState({ author_lastname: '' });
+    this.setState({ author_middlename: '' });
+    this.setState({ title: '' });
     this.setState({ city: '' });
+    this.setState({ publisher: '' });
+    this.setState({ year: '' });
     this.setState({ pages: '' });
   }
 
@@ -53,9 +72,43 @@ class NewItem extends Component {
       <section className="new-entry">
         <h2 className="title">Новый элемент:</h2>
         <div className="new-entry__inputs">
-          <TextareaBlock title="Название работы" value={this.state.name} click={this.handleChange} category="name" />
-          <TextareaBlock title="Место публикации" value={this.state.place} click={this.handleChange} category="place" />
+          <InputBlock
+            title="Фамилия автора"
+            type="text"
+            value={this.state.author_lastname}
+            click={this.handleChange}
+            category="author_lastname"
+          />
+          <InputBlock
+            title="Имя автора"
+            type="text"
+            value={this.state.author_name}
+            click={this.handleChange}
+            category="author_name"
+          />
+          <InputBlock
+            title="Отчество автора"
+            type="text"
+            value={this.state.author_middlename}
+            click={this.handleChange}
+            category="author_middlename"
+          />
+          <TextareaBlock title="Название работы" value={this.state.title} click={this.handleChange} category="title" />
           <InputBlock title="Город" type="text" value={this.state.city} click={this.handleChange} category="city" />
+          <InputBlock
+            title="Издательство"
+            type="text"
+            value={this.state.publisher}
+            click={this.handleChange}
+            category="publisher"
+          />
+          <InputBlock
+            title="Год публикации"
+            type="number"
+            value={this.state.year}
+            click={this.handleChange}
+            category="year"
+          />
           <InputBlock
             title="Количество страниц"
             type="number"
