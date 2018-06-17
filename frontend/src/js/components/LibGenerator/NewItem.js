@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import NewEntryInput from './NewEntryInput';
-import NewEntryTextarea from './NewEntryTextarea';
+import InputBlock from './InputBlock';
+import TextareaBlock from './TextareaBlock';
 
-class NewLibEntry extends Component {
+class NewItem extends Component {
   constructor(props) {
     super(props);
 
@@ -28,8 +28,14 @@ class NewLibEntry extends Component {
    * Добавляет новый элемент списка литературы
    */
   addNewEntry() {
-    this.props.add(this.state);
-    this.resetState();
+    if (this.validateInputs()) {
+      this.props.add(this.state);
+      this.resetState();
+    }
+  }
+
+  validateInputs() {
+    return !!this.state.name && !!this.state.place && !!this.state.city && !!this.state.pages;
   }
 
   /**
@@ -47,26 +53,10 @@ class NewLibEntry extends Component {
       <section className="new-entry">
         <h2 className="title">Новый элемент:</h2>
         <div className="new-entry__inputs">
-          <NewEntryTextarea
-            title="Название работы"
-            value={this.state.name} 
-            click={this.handleChange} 
-            category="name" 
-          />
-          <NewEntryTextarea
-            title="Место публикации"
-            value={this.state.place} 
-            click={this.handleChange} 
-            category="place" 
-          />
-          <NewEntryInput 
-            title="Город" 
-            type="text"
-            value={this.state.city} 
-            click={this.handleChange} 
-            category="city" 
-          />
-          <NewEntryInput
+          <TextareaBlock title="Название работы" value={this.state.name} click={this.handleChange} category="name" />
+          <TextareaBlock title="Место публикации" value={this.state.place} click={this.handleChange} category="place" />
+          <InputBlock title="Город" type="text" value={this.state.city} click={this.handleChange} category="city" />
+          <InputBlock
             title="Количество страниц"
             type="number"
             value={this.state.pages}
@@ -74,7 +64,7 @@ class NewLibEntry extends Component {
             category="pages"
           />
         </div>
-        <button className="button" onClick={() => this.addNewEntry()}>
+        <button className="button new-entry__button" onClick={() => this.addNewEntry()}>
           Добавить
         </button>
       </section>
@@ -82,4 +72,4 @@ class NewLibEntry extends Component {
   }
 }
 
-export default NewLibEntry;
+export default NewItem;

@@ -113,3 +113,6 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-flex: none;
         -ms-flex: none;
             flex: none; }
+  .new-entry__button {
+    display: block;
+    margin: 0 auto; }
