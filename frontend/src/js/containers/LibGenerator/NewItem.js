@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import InputBlock from './InputBlock';
-import TextareaBlock from './TextareaBlock';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import InputBlock from '../../components/LibGenerator/InputBlock';
+import TextareaBlock from '../../components/LibGenerator/TextareaBlock';
+import * as biblioListActions from '../../actions/biblioListActions';
 
 class NewItem extends Component {
   constructor(props) {
@@ -40,6 +44,9 @@ class NewItem extends Component {
     }
   }
 
+  /**
+   * Валидация
+   */
   validateInputs() {
     return (
       !!this.state.title &&
@@ -125,4 +132,20 @@ class NewItem extends Component {
   }
 }
 
-export default NewItem;
+function mapStateToProps(state) {
+  return {
+    biblioStore: state.biblioListReducer,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    biblioListActions: bindActionCreators(biblioListActions, dispatch),
+  };
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(NewItem);

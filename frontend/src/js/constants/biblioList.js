@@ -1,0 +1,1 @@
+export const ADD_BIBLIO_LIST_ITEM = 'ADD_BIBLIO_LIST_ITEM';

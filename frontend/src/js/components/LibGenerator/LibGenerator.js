@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Result from './Result';
-import NewItem from './NewItem';
+import NewItem from '../../containers/LibGenerator/NewItem';
 
 class LibGenerator extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class LibGenerator extends Component {
 
   /**
    * Добавиляет новый элемент списка литературы
-   * @param {Object} entry 
+   * @param {Object} entry
    */
   addEntry(entry) {
     this.setState(prevState => {
@@ -26,8 +26,8 @@ class LibGenerator extends Component {
   render() {
     return (
       <section className="generator">
-        <NewItem add={this.addEntry}/>
-        <Result list={this.state.items}/>
+        <NewItem add={this.addEntry} />
+        <Result list={this.state.items} />
       </section>
     );
   }
