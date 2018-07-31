@@ -1,7 +1,7 @@
 import * as C from '../constants'
 
 const initialState = {
-  biblioList: [],
+  list: [],
   error: null,
 };
 
@@ -10,7 +10,7 @@ export default function biblioListReducer(state = initialState, action) {
     case C.ADD_BIBLIO_LIST_ITEM:
       return {
         ...state,
-        biblioList: [...state.biblioList, action.payload]
+        list: [...state.list, action.payload]
       }
 
     default:

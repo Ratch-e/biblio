@@ -97,6 +97,20 @@ h1, h2, h3, h4, h5, h6 {
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
     margin-bottom: 10px; }
+  .new-entry__block {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+    .new-entry__block_type_authors {
+      margin-bottom: 50px;
+      width: 50%; }
+    .new-entry__block_type_options {
+      margin: 0 0 50px 0; }
   .new-entry__item {
     margin-bottom: 20px;
     width: 50%;
@@ -113,6 +127,8 @@ h1, h2, h3, h4, h5, h6 {
         -ms-flex-align: start;
             align-items: flex-start;
     padding: 10px; }
+    .new-entry__item_type_author {
+      width: 100%; }
   .new-entry__title {
     width: 200px;
     display: block;

@@ -16,10 +16,4 @@ describe('Запуск компонентов', () => {
     ReactDOM.render(<Header />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-
-  test('Генератор показывается', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<LibGenerator />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
 });

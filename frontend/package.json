@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://ratch-e.github.io/biblio/",
   "dependencies": {
+    "classnames": "^2.2.6",
     "gh-pages": "^1.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
