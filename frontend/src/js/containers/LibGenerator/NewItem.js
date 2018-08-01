@@ -22,10 +22,13 @@ class NewItem extends Component {
       publisher: '',
       year: '',
       pages: '',
+      type: 1,
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleAuthorChange = this.handleAuthorChange.bind(this);
     this.addNewCoauthor = this.addNewCoauthor.bind(this);
+    this.setType = this.setType.bind(this);
   }
 
   /**
@@ -37,6 +40,14 @@ class NewItem extends Component {
     this.setState({ [key]: event.target.value });
   }
 
+  /**
+   * Хендлер для инпутов автора
+   *
+   * @param {*} key
+   * @param {*} event
+   * @param {*} index
+   * @memberof NewItem
+   */
   handleAuthorChange(key, event, index) {
     let newState = { ...this.state };
     newState.author[index][key] = event.target.value;
@@ -56,6 +67,9 @@ class NewItem extends Component {
     this.setState({ newState });
   }
 
+  /**
+   * Удалить соавтора
+   */
   removeCoauthor() {
     let newState = { ...this.state };
     newState.author.pop();
@@ -72,6 +86,10 @@ class NewItem extends Component {
     } else {
       console.error('Не прошло валидацию');
     }
+  }
+
+  setType(event) {
+    this.setState({ type: event.target.value });
   }
 
   /**
@@ -99,6 +117,7 @@ class NewItem extends Component {
     this.setState({ publisher: '' });
     this.setState({ year: '' });
     this.setState({ pages: '' });
+    this.setState({ type: 1 });
   }
 
   render() {
@@ -106,6 +125,11 @@ class NewItem extends Component {
       <section className="new-entry">
         <h2 className="title">Новый элемент:</h2>
         <div className="new-entry__inputs">
+          <select value={this.state.value} onChange={this.setType}>
+            <option value="1">Книга</option>
+            <option value="2">Журнал</option>
+          </select>
+
           {this.state.author.map((author, key) => (
             <div key={key} className="new-entry__block new-entry__block_type_authors">
               <InputBlock
@@ -180,7 +204,6 @@ class NewItem extends Component {
               Добавить
             </button>
           </div>
-
         </div>
       </section>
     );
