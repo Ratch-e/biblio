@@ -43,6 +43,9 @@ class NewItem extends Component {
     this.setState({ newState });
   }
 
+  /**
+   * Добавить соавтора
+   */
   addNewCoauthor() {
     let newState = { ...this.state };
     newState.author.push({
@@ -50,6 +53,12 @@ class NewItem extends Component {
       lastname: '',
       middlename: '',
     });
+    this.setState({ newState });
+  }
+
+  removeCoauthor() {
+    let newState = { ...this.state };
+    newState.author.pop();
     this.setState({ newState });
   }
 
@@ -133,9 +142,14 @@ class NewItem extends Component {
             <button className="button new-entry__button" onClick={() => this.addNewCoauthor()}>
               Добавить соавтора
             </button>
+            {this.state.author.length > 1 ? (
+              <button className="button new-entry__button" onClick={() => this.removeCoauthor()}>
+                Удалить соавтора
+              </button>
+            ) : null}
           </div>
 
-          <div className="new-entry__block">
+          <div className="new-entry__block new-entry__block_type_info">
             <InputBlock title="Название работы" value={this.state.title} click={this.handleChange} category="title" />
             <InputBlock title="Город" type="text" value={this.state.city} click={this.handleChange} category="city" />
             <InputBlock
@@ -160,10 +174,14 @@ class NewItem extends Component {
               category="pages"
             />
           </div>
+
+          <div className="new-entry__block new-entry__block_type_options">
+            <button className="button new-entry__button" onClick={() => this.addNewEntry()}>
+              Добавить
+            </button>
+          </div>
+
         </div>
-        <button className="button new-entry__button" onClick={() => this.addNewEntry()}>
-          Добавить
-        </button>
       </section>
     );
   }

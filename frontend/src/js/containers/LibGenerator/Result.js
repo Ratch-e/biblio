@@ -7,18 +7,17 @@ import { connect } from 'react-redux';
  */
 const Result = props => (
   <div className="generator__result">
-    <h2 className="title">Итоговый список:</h2>
+    {props.biblioStore.length ? <h2 className="title">Итоговый список:</h2> : null}
     <ol className="list">
       {props.biblioStore.list.map((item, key) => (
         <li className="list__item" key={key}>
           <span className="list__text">
-            {
-              item.author.map((author, key) => 
-                item.author.length - 1 === key ? 
-                `${author.lastname} ${author.name[0]}.${author.middlename[0]}` : 
-                `${author.lastname} ${author.name[0]}.${author.middlename[0]}, `
-              )
-            }
+            {item.author.map(
+              (author, key) =>
+                item.author.length - 1 === key
+                  ? `${author.lastname} ${author.name[0]}.${author.middlename[0]}`
+                  : `${author.lastname} ${author.name[0]}.${author.middlename[0]}, `,
+            )}
             . {item.title}. &mdash;{' '}
             {item.city === 'Москва' ? 'M.' : item.city === 'Cанкт-Петербург' ? 'СПб.' : item.city}: {item.publisher},{' '}
             {item.year}. &mdash; {item.pages}c.
