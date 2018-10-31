@@ -17,16 +17,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .app {
   width: 1200px;
-  margin: 40px auto;
-  padding: 40px;
-  background-color: white;
-  -webkit-box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.3);
-          box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: 3px;
-          border-radius: 3px; }
+  margin: 0 auto; }
 
 .header {
-  padding: 10px 0;
+  padding: 50px 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -105,6 +99,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 5px;
   -o-object-fit: contain;
      object-fit: contain; }
+
+.card {
+  padding: 40px;
+  background-color: white;
+  -webkit-box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 3px;
+          border-radius: 3px; }
 
 .new-entry {
   margin-bottom: 70px; }

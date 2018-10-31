@@ -119,7 +119,7 @@ class NewItem extends Component {
 
   render() {
     return (
-      <section className="new-entry">
+      <section className="new-entry card">
         <h2 className="title">Новый элемент:</h2>
         <div className="new-entry__inputs">
           <div className="new-entry__block">
