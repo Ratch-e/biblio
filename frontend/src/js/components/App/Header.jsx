@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = props => (
+const Header = () => (
   <div className="app">
     <header className="header">
       <div className="header__inner">

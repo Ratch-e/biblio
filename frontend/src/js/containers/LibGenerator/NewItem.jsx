@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import InputBlock from '../../components/LibGenerator/InputBlock';
+import Author from '../../components/LibGenerator/Author'
+
 import * as biblioListActions from '../../actions/biblioListActions';
 
 class NewItem extends Component {
@@ -49,31 +51,31 @@ class NewItem extends Component {
    * @memberof NewItem
    */
   handleAuthorChange(key, event, index) {
-    let newState = { ...this.state };
-    newState.author[index][key] = event.target.value;
-    this.setState({ newState });
+    let authors = [...this.state.author];
+    authors[index][key] = event.target.value;
+    this.setState({ author: authors });
   }
 
   /**
    * Добавить соавтора
    */
   addNewCoauthor() {
-    let newState = { ...this.state };
-    newState.author.push({
+    let authors = [...this.state.author];
+    authors.push({
       name: '',
       lastname: '',
       middlename: '',
     });
-    this.setState({ newState });
+    this.setState({ author: authors });
   }
 
   /**
    * Удалить соавтора
    */
   removeCoauthor() {
-    let newState = { ...this.state };
-    newState.author.pop();
-    this.setState({ newState });
+    let authors = [...this.state.author];
+    authors.pop();
+    this.setState({ author: authors });
   }
 
   /**
@@ -131,35 +133,12 @@ class NewItem extends Component {
           </select>
 
           {this.state.author.map((author, key) => (
-            <div key={key} className="new-entry__block new-entry__block_type_authors">
-              <InputBlock
-                className="new-entry__item_type_author"
-                title="Фамилия автора"
-                type="text"
-                index={key}
-                value={author.lastname}
-                click={this.handleAuthorChange}
-                category="lastname"
-              />
-              <InputBlock
-                className="new-entry__item_type_author"
-                title="Имя автора"
-                type="text"
-                index={key}
-                value={author.name}
-                click={this.handleAuthorChange}
-                category="name"
-              />
-              <InputBlock
-                className="new-entry__item_type_author"
-                title="Отчество автора"
-                type="text"
-                index={key}
-                value={author.middlename}
-                click={this.handleAuthorChange}
-                category="middlename"
-              />
-            </div>
+            <Author 
+              key={key}
+              index={key}
+              author={author}
+              handleAuthorChange={this.handleAuthorChange}
+            />
           ))}
 
           <div className="new-entry__block new-entry__block_type_options">

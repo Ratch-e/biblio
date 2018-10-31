@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 
-import App from './js/components/App/App';
+import App from './js/components/App/App.jsx';
 import './css/index.css';
 import configureStore from './js/store/configureStore';
 
