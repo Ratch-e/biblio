@@ -26,11 +26,6 @@ class NewItem extends Component {
       pages: '',
       type: 1,
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAuthorChange = this.handleAuthorChange.bind(this);
-    this.addNewCoauthor = this.addNewCoauthor.bind(this);
-    this.setType = this.setType.bind(this);
   }
 
   /**
@@ -38,7 +33,7 @@ class NewItem extends Component {
    * @param {String} key
    * @param {Object} event
    */
-  handleChange(key, event) {
+  handleChange = (key, event) => {
     this.setState({ [key]: event.target.value });
   }
 
@@ -50,7 +45,7 @@ class NewItem extends Component {
    * @param {*} index
    * @memberof NewItem
    */
-  handleAuthorChange(key, event, index) {
+  handleAuthorChange = (key, event, index) => {
     let authors = [...this.state.author];
     authors[index][key] = event.target.value;
     this.setState({ author: authors });
@@ -59,7 +54,7 @@ class NewItem extends Component {
   /**
    * Добавить соавтора
    */
-  addNewCoauthor() {
+  addNewCoauthor = () => {
     let authors = [...this.state.author];
     authors.push({
       name: '',
@@ -72,7 +67,7 @@ class NewItem extends Component {
   /**
    * Удалить соавтора
    */
-  removeCoauthor() {
+  removeCoauthor = () => {
     let authors = [...this.state.author];
     authors.pop();
     this.setState({ author: authors });
@@ -81,7 +76,7 @@ class NewItem extends Component {
   /**
    * Добавляет новый элемент списка литературы
    */
-  addNewEntry() {
+  addNewEntry = () => {
     if (this.validateInputs()) {
       this.props.biblioListActions.addItem(this.state);
       this.resetState();
@@ -90,21 +85,21 @@ class NewItem extends Component {
     }
   }
 
-  setType(event) {
+  setType = (event) => {
     this.setState({ type: event.target.value });
   }
 
   /**
    * Валидация
    */
-  validateInputs() {
+  validateInputs = () => {
     return !!this.state.title && !!this.state.city && !!this.state.pages && !!this.state.publisher && !!this.state.year;
   }
 
   /**
    * Сброс хранилища
    */
-  resetState() {
+  resetState = () => {
     this.setState({
       author: [
         {
@@ -127,13 +122,15 @@ class NewItem extends Component {
       <section className="new-entry">
         <h2 className="title">Новый элемент:</h2>
         <div className="new-entry__inputs">
-          <select value={this.state.value} onChange={this.setType}>
-            <option value="1">Книга</option>
-            <option value="2">Журнал</option>
-          </select>
+          <div className="new-entry__block">
+            <select className="select" value={this.state.value} onChange={this.setType}>
+              <option value="1">Книга</option>
+              <option value="2">Журнал</option>
+            </select>
+          </div>
 
           {this.state.author.map((author, key) => (
-            <Author 
+            <Author
               key={key}
               index={key}
               author={author}
@@ -183,6 +180,7 @@ class NewItem extends Component {
               Добавить
             </button>
           </div>
+
         </div>
       </section>
     );
