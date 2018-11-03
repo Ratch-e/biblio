@@ -4,7 +4,7 @@ import NewItem from '../../containers/LibGenerator/NewItem';
 
 const LibGenerator = () => {
   return (
-    <section className="generator">
+    <section className="generator card">
       <NewItem />
       <Result/>
     </section>
