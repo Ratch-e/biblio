@@ -4,7 +4,11 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
 
 export default function configureStore(initialState) {
-  const store = createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
+  const store = createStore(
+    rootReducer, 
+    initialState, 
+    composeWithDevTools(applyMiddleware(thunk))
+  );
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {

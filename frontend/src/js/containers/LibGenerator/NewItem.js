@@ -125,10 +125,15 @@ class NewItem extends Component {
       <section className="new-entry">
         <h2 className="title">Новый элемент:</h2>
         <div className="new-entry__inputs">
-          <select value={this.state.value} onChange={this.setType}>
-            <option value="1">Книга</option>
-            <option value="2">Журнал</option>
-          </select>
+          <div className="new-entry__block">
+            <label className="new-entry__item">
+              <span className="new-entry__title">Тип публикации</span>
+              <select className="select" value={this.state.value} onChange={this.setType}>
+                <option value="1">Книга</option>
+                <option value="2">Журнал</option>
+              </select>
+            </label>
+          </div>
 
           {this.state.author.map((author, key) => (
             <div key={key} className="new-entry__block new-entry__block_type_authors">
