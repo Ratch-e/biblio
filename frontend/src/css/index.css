@@ -4,7 +4,9 @@ body {
   margin: 0;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fafdf7;
+  color: #324f58; }
 
 * {
   -webkit-box-sizing: border-box;
@@ -18,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto; }
 
 .header {
-  padding: 10px 0;
+  padding: 50px 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #324f58;
     padding: 0 25px 15px; }
   .header__title {
     margin: 0; }
@@ -60,30 +62,40 @@ h1, h2, h3, h4, h5, h6 {
 .button {
   font-size: 16px;
   padding: 8px 17px;
-  border-top: 1px solid transparent;
-  border-left: 1px solid transparent;
-  border-bottom: 1px solid #000;
-  border-right: 1px solid transparent;
+  color: #fafdf7;
+  background-color: #324f58;
+  border: 1px solid #324f58;
   cursor: pointer;
-  -webkit-transition: border .15s ease-in-out;
-  -o-transition: border .15s ease-in-out;
-  transition: border .15s ease-in-out; }
+  -webkit-transition: all .1s ease-in-out;
+  -o-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  -webkit-border-radius: 3px;
+          border-radius: 3px; }
   .button:hover {
-    border: 1px solid #000; }
+    color: #324f58;
+    background-color: #cddc39; }
 
 .input {
   padding: 5px;
   width: 100%;
-  border: 1px solid #000000;
+  border: 1px solid #324f58;
   resize: vertical;
   font-size: 16px;
   min-height: 20px; }
 
 .select {
   padding: 5px;
+<<<<<<< HEAD
   width: 300px;
   border: 1px solid #000000;
   resize: vertical;
+=======
+  background-color: transparent;
+  -webkit-border-radius: none;
+          border-radius: none;
+  border: 1px solid #324f58;
+  color: #324f58;
+>>>>>>> f99863c62ef80f11470f78d5f7125cc162ea5545
   font-size: 16px;
   min-height: 20px; }
 
@@ -93,6 +105,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 5px;
   -o-object-fit: contain;
      object-fit: contain; }
+
+.card {
+  padding: 40px;
+  background-color: white;
+  -webkit-box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 3px;
+          border-radius: 3px; }
 
 .new-entry {
   margin-bottom: 70px; }

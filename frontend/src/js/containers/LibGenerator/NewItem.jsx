@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import InputBlock from '../../components/LibGenerator/InputBlock';
+import Author from '../../components/LibGenerator/Author'
+
 import * as biblioListActions from '../../actions/biblioListActions';
 
 class NewItem extends Component {
@@ -24,11 +26,6 @@ class NewItem extends Component {
       pages: '',
       type: 1,
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAuthorChange = this.handleAuthorChange.bind(this);
-    this.addNewCoauthor = this.addNewCoauthor.bind(this);
-    this.setType = this.setType.bind(this);
   }
 
   /**
@@ -36,7 +33,7 @@ class NewItem extends Component {
    * @param {String} key
    * @param {Object} event
    */
-  handleChange(key, event) {
+  handleChange = (key, event) => {
     this.setState({ [key]: event.target.value });
   }
 
@@ -48,38 +45,38 @@ class NewItem extends Component {
    * @param {*} index
    * @memberof NewItem
    */
-  handleAuthorChange(key, event, index) {
-    let newState = { ...this.state };
-    newState.author[index][key] = event.target.value;
-    this.setState({ newState });
+  handleAuthorChange = (key, event, index) => {
+    let authors = [...this.state.author];
+    authors[index][key] = event.target.value;
+    this.setState({ author: authors });
   }
 
   /**
    * Добавить соавтора
    */
-  addNewCoauthor() {
-    let newState = { ...this.state };
-    newState.author.push({
+  addNewCoauthor = () => {
+    let authors = [...this.state.author];
+    authors.push({
       name: '',
       lastname: '',
       middlename: '',
     });
-    this.setState({ newState });
+    this.setState({ author: authors });
   }
 
   /**
    * Удалить соавтора
    */
-  removeCoauthor() {
-    let newState = { ...this.state };
-    newState.author.pop();
-    this.setState({ newState });
+  removeCoauthor = () => {
+    let authors = [...this.state.author];
+    authors.pop();
+    this.setState({ author: authors });
   }
 
   /**
    * Добавляет новый элемент списка литературы
    */
-  addNewEntry() {
+  addNewEntry = () => {
     if (this.validateInputs()) {
       this.props.biblioListActions.addItem(this.state);
       this.resetState();
@@ -88,21 +85,21 @@ class NewItem extends Component {
     }
   }
 
-  setType(event) {
+  setType = (event) => {
     this.setState({ type: event.target.value });
   }
 
   /**
    * Валидация
    */
-  validateInputs() {
+  validateInputs = () => {
     return !!this.state.title && !!this.state.city && !!this.state.pages && !!this.state.publisher && !!this.state.year;
   }
 
   /**
    * Сброс хранилища
    */
-  resetState() {
+  resetState = () => {
     this.setState({
       author: [
         {
@@ -122,7 +119,7 @@ class NewItem extends Component {
 
   render() {
     return (
-      <section className="new-entry">
+      <section className="new-entry card">
         <h2 className="title">Новый элемент:</h2>
         <div className="new-entry__inputs">
           <div className="new-entry__block">
@@ -136,35 +133,12 @@ class NewItem extends Component {
           </div>
 
           {this.state.author.map((author, key) => (
-            <div key={key} className="new-entry__block new-entry__block_type_authors">
-              <InputBlock
-                className="new-entry__item_type_author"
-                title="Фамилия автора"
-                type="text"
-                index={key}
-                value={author.lastname}
-                click={this.handleAuthorChange}
-                category="lastname"
-              />
-              <InputBlock
-                className="new-entry__item_type_author"
-                title="Имя автора"
-                type="text"
-                index={key}
-                value={author.name}
-                click={this.handleAuthorChange}
-                category="name"
-              />
-              <InputBlock
-                className="new-entry__item_type_author"
-                title="Отчество автора"
-                type="text"
-                index={key}
-                value={author.middlename}
-                click={this.handleAuthorChange}
-                category="middlename"
-              />
-            </div>
+            <Author
+              key={key}
+              index={key}
+              author={author}
+              handleAuthorChange={this.handleAuthorChange}
+            />
           ))}
 
           <div className="new-entry__block new-entry__block_type_options">
@@ -209,6 +183,7 @@ class NewItem extends Component {
               Добавить
             </button>
           </div>
+
         </div>
       </section>
     );
