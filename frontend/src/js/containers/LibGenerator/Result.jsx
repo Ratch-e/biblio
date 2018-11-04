@@ -8,7 +8,7 @@ import Book from '../../components/ResultItems/Book'
  */
 const Result = props => (
   <div className="generator__result">
-    {props.biblioStore.length ? <h2 className="title">Итоговый список:</h2> : null}
+    {props.biblioStore.length ? <h2 className="title">Итоговый список: (ГОСТ 7.1 и ГОСТ 7.80)</h2> : null}
     <ol className="list">
       {props.biblioStore.list.map((item, key) => (
         <li className="list__item" key={key}>
