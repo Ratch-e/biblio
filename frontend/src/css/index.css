@@ -5,7 +5,7 @@ body {
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
   font-family: 'Open Sans', sans-serif;
-  background-color: #fafdf7;
+  background-color: #8bc34a;
   color: #324f58; }
 
 * {
@@ -51,10 +51,12 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
-    border-bottom: 1px solid #324f58;
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
     padding: 0 25px 15px; }
   .header__title {
-    margin: 0; }
+    margin: 0;
+    font-size: 50px; }
   .header__subtitle {
     display: block;
     margin-top: 10px; }
@@ -62,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 .button {
   font-size: 16px;
   padding: 8px 17px;
-  color: #fafdf7;
+  color: #ffffff;
   background-color: #324f58;
   border: 1px solid #324f58;
   cursor: pointer;
