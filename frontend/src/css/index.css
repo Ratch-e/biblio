@@ -19,6 +19,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 1200px;
   margin: 0 auto; }
 
+.title {
+  font-size: 30px;
+  margin: 0 0 40px; }
+
 .header {
   padding: 50px 0;
   display: -webkit-box;
@@ -88,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 .select {
   padding: 5px;
   background-color: transparent;
-  width: 300px;
+  width: 250px;
   -webkit-border-radius: none;
           border-radius: none;
   border: 1px solid #324f58;
@@ -106,8 +110,8 @@ h1, h2, h3, h4, h5, h6 {
 .card {
   padding: 40px;
   background-color: white;
-  -webkit-box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.3);
-          box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: -3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: -3px 3px 5px 0 rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 3px;
           border-radius: 3px;
   margin-bottom: 40px; }
@@ -140,7 +144,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
   width: -webkit-calc(100%/3);
   width: calc(100%/3);
-  padding: 10px; }
+  padding-right: 20px;
+  padding-bottom: 10px; }
 
 .new-entry__title {
   display: block;

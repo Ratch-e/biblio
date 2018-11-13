@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import InputBlock from '../../components/LibGenerator/InputBlock';
 import Author from '../../components/LibGenerator/Author';
 
+import biblioTypes from '../../constants/biblioTypes';
+
 import * as biblioListActions from '../../actions/biblioListActions';
 
 class NewItem extends Component {
@@ -24,7 +26,7 @@ class NewItem extends Component {
       publisher: '',
       year: '',
       pages: '',
-      type: 1,
+      type: biblioTypes.Book,
     };
   }
 
@@ -108,13 +110,13 @@ class NewItem extends Component {
           middlename: '',
         },
       ],
+      title: '',
+      city: '',
+      publisher: '',
+      year: '',
+      pages: '',
+      type: biblioTypes.Book,
     });
-    this.setState({ title: '' });
-    this.setState({ city: '' });
-    this.setState({ publisher: '' });
-    this.setState({ year: '' });
-    this.setState({ pages: '' });
-    this.setState({ type: 1 });
   };
 
   render() {
@@ -126,8 +128,12 @@ class NewItem extends Component {
             <label className="new-entry__item">
               <span className="new-entry__title">Тип публикации</span>
               <select className="select" value={this.state.value} onChange={this.setType}>
-                <option value="1">Книга</option>
-                <option value="2">Журнал</option>
+                <option value={biblioTypes.Book}>Книга</option>
+                <option value={biblioTypes.Document}>Официальный документ</option>
+                <option value={biblioTypes.Journal}>Статья из журнала</option>
+                <option value={biblioTypes.Collection}>Статья из сборника</option>
+                <option value={biblioTypes.Local}>Ресурс локального доступа</option>
+                <option value={biblioTypes.Remote}>Ресурс удаленного доступа</option>
               </select>
             </label>
           </div>
