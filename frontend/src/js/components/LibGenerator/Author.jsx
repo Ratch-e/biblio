@@ -9,7 +9,7 @@ const Author = ({ index, author, handleAuthorChange }) => (
       type="text"
       index={index}
       value={author.lastname}
-      click={handleAuthorChange}
+      change={handleAuthorChange}
       category="lastname"
     />
     <InputBlock
@@ -18,7 +18,7 @@ const Author = ({ index, author, handleAuthorChange }) => (
       type="text"
       index={index}
       value={author.name}
-      click={handleAuthorChange}
+      change={handleAuthorChange}
       category="name"
     />
     <InputBlock
@@ -27,7 +27,7 @@ const Author = ({ index, author, handleAuthorChange }) => (
       type="text"
       index={index}
       value={author.middlename}
-      click={handleAuthorChange}
+      change={handleAuthorChange}
       category="middlename"
     />
   </div>

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import InputBlock from '../../components/LibGenerator/InputBlock';
 import Author from '../../components/LibGenerator/Author';
+
+import Book from '../../components/LibGenerator/Fieldsets/Book'
 
 import biblioTypes from '../../constants/biblioTypes';
 
@@ -140,7 +141,12 @@ class NewItem extends Component {
 
           <div className="new-entry__block new-entry__block_type_authors">
             {this.state.author.map((author, key) => (
-              <Author key={key} index={key} author={author} handleAuthorChange={this.handleAuthorChange} />
+              <Author 
+                key={key}
+                index={key}
+                author={author}
+                handleAuthorChange={this.handleAuthorChange}
+              />
             ))}
           </div>
 
@@ -155,31 +161,14 @@ class NewItem extends Component {
             ) : null}
           </div>
 
-          <div className="new-entry__block new-entry__block_type_info">
-            <InputBlock title="Название работы" value={this.state.title} click={this.handleChange} category="title" />
-            <InputBlock title="Город" type="text" value={this.state.city} click={this.handleChange} category="city" />
-            <InputBlock
-              title="Издательство"
-              type="text"
-              value={this.state.publisher}
-              click={this.handleChange}
-              category="publisher"
-            />
-            <InputBlock
-              title="Год публикации"
-              type="number"
-              value={this.state.year}
-              click={this.handleChange}
-              category="year"
-            />
-            <InputBlock
-              title="Количество страниц"
-              type="number"
-              value={this.state.pages}
-              click={this.handleChange}
-              category="pages"
-            />
-          </div>
+          <Book
+            title={this.state.title}
+            city={this.state.city}
+            change={this.handleChange}
+            publisher={this.state.publisher}
+            year={this.state.year}
+            pages={this.state.pages}
+          />
 
           <div className="new-entry__block new-entry__block_type_options">
             <button className="button new-entry__button" onClick={() => this.addNewEntry()}>
