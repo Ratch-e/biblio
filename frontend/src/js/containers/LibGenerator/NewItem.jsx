@@ -76,6 +76,24 @@ class NewItem extends Component {
     this.setState({ author: authors });
   };
 
+  generateBiblioTypeInputs = () => {
+    switch (this.state.type) {
+      case biblioTypes.Book:
+        return (
+          <Book
+            title={this.state.title}
+            city={this.state.city}
+            change={this.handleChange}
+            publisher={this.state.publisher}
+            year={this.state.year}
+            pages={this.state.pages}
+          />
+        );
+      default:
+        return <p>Данный тип временно не доступен. Выберите другой.</p>;
+    }
+  }
+
   /**
    * Добавляет новый элемент списка литературы
    */
@@ -92,11 +110,18 @@ class NewItem extends Component {
     this.setState({ type: event.target.value });
   };
 
+  
   /**
    * Валидация
    */
   validateInputs = () => {
-    return !!this.state.title && !!this.state.city && !!this.state.pages && !!this.state.publisher && !!this.state.year;
+    //TODO: add authors validation
+    switch (this.state.type) {
+      case biblioTypes.Book:
+        return !!this.state.title && !!this.state.city && !!this.state.pages && !!this.state.publisher && !!this.state.year;
+      default:
+        return false;
+    }
   };
 
   /**
@@ -141,7 +166,7 @@ class NewItem extends Component {
 
           <div className="new-entry__block new-entry__block_type_authors">
             {this.state.author.map((author, key) => (
-              <Author 
+              <Author
                 key={key}
                 index={key}
                 author={author}
@@ -161,14 +186,7 @@ class NewItem extends Component {
             ) : null}
           </div>
 
-          <Book
-            title={this.state.title}
-            city={this.state.city}
-            change={this.handleChange}
-            publisher={this.state.publisher}
-            year={this.state.year}
-            pages={this.state.pages}
-          />
+          { this.generateBiblioTypeInputs() }
 
           <div className="new-entry__block new-entry__block_type_options">
             <button className="button new-entry__button" onClick={() => this.addNewEntry()}>
