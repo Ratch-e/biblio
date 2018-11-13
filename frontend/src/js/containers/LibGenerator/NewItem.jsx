@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import InputBlock from '../../components/LibGenerator/InputBlock';
-import Author from '../../components/LibGenerator/Author'
+import Author from '../../components/LibGenerator/Author';
 
 import * as biblioListActions from '../../actions/biblioListActions';
 
@@ -35,7 +35,7 @@ class NewItem extends Component {
    */
   handleChange = (key, event) => {
     this.setState({ [key]: event.target.value });
-  }
+  };
 
   /**
    * Хендлер для инпутов автора
@@ -49,7 +49,7 @@ class NewItem extends Component {
     let authors = [...this.state.author];
     authors[index][key] = event.target.value;
     this.setState({ author: authors });
-  }
+  };
 
   /**
    * Добавить соавтора
@@ -62,7 +62,7 @@ class NewItem extends Component {
       middlename: '',
     });
     this.setState({ author: authors });
-  }
+  };
 
   /**
    * Удалить соавтора
@@ -71,7 +71,7 @@ class NewItem extends Component {
     let authors = [...this.state.author];
     authors.pop();
     this.setState({ author: authors });
-  }
+  };
 
   /**
    * Добавляет новый элемент списка литературы
@@ -83,18 +83,18 @@ class NewItem extends Component {
     } else {
       console.error('Не прошло валидацию');
     }
-  }
+  };
 
-  setType = (event) => {
+  setType = event => {
     this.setState({ type: event.target.value });
-  }
+  };
 
   /**
    * Валидация
    */
   validateInputs = () => {
     return !!this.state.title && !!this.state.city && !!this.state.pages && !!this.state.publisher && !!this.state.year;
-  }
+  };
 
   /**
    * Сброс хранилища
@@ -115,7 +115,7 @@ class NewItem extends Component {
     this.setState({ year: '' });
     this.setState({ pages: '' });
     this.setState({ type: 1 });
-  }
+  };
 
   render() {
     return (
@@ -132,14 +132,11 @@ class NewItem extends Component {
             </label>
           </div>
 
-          {this.state.author.map((author, key) => (
-            <Author
-              key={key}
-              index={key}
-              author={author}
-              handleAuthorChange={this.handleAuthorChange}
-            />
-          ))}
+          <div className="new-entry__block new-entry__block_type_authors">
+            {this.state.author.map((author, key) => (
+              <Author key={key} index={key} author={author} handleAuthorChange={this.handleAuthorChange} />
+            ))}
+          </div>
 
           <div className="new-entry__block new-entry__block_type_options">
             <button className="button new-entry__button" onClick={() => this.addNewCoauthor()}>
@@ -183,7 +180,6 @@ class NewItem extends Component {
               Добавить
             </button>
           </div>
-
         </div>
       </section>
     );
